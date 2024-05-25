@@ -5,17 +5,18 @@ import bcrypt from "bcrypt"
 // import { ConnectDB } from "@/lib/utils"
 
 export const { auth, handlers, signIn, signOut } = NextAuth({
-    cookies: {
-        sessionToken: {
-            name: "next-auth.session-token",
-            options: {
-                path: "/",
-                httpOnly: true,
-                sameSite: "lax",
-                // secure: process.env.NODE_ENV === 'production',
-            },
-        },
-    },
+    // cookies: {
+    //     sessionToken: {
+    //         name: "next-auth.session-token",
+    //         options: {
+    //             domain: "localhost", // Replace with your actual domain
+    //             path: "/",
+    //             httpOnly: true,
+    //             sameSite: "lax",
+    //             secure: false,
+    //         },
+    //     },
+    // },
     providers: [
         credentials({
             name: 'credentials',

@@ -7,7 +7,8 @@ export function middleware(request: NextRequest) {
         '/',
     ]
 
-    const userToken = request.cookies.get("next-auth.session-token")?.value;
+    // const userToken = request.cookies.get("next-auth.session-token")?.value;
+    const userToken = request.cookies.get("authjs.session-token")?.value;
     if ((request.nextUrl.pathname.startsWith('/login') && userToken) || (request.nextUrl.pathname.startsWith('/register') && userToken)) {
         return NextResponse.redirect(new URL('/', request.url))
     }
@@ -21,3 +22,4 @@ export function middleware(request: NextRequest) {
 // export const config = {
 //     matcher: ['/product-child', '/product', '/login', '/register', "/"],
 // }
+
