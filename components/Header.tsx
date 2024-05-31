@@ -15,28 +15,28 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Avatar, AvatarImage } from "@/components/ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { auth, signOut } from "@/auth"
 
 const Header = async () => {
     const session = await auth();
     return (
-        <header className="bg-[#f2f2f2] px-3 flex justify-between items-center" >
+        <header className="px-3 flex justify-between items-center" >
             <div className="" >
                 <Image src={TrelloLogo} alt="trello logo" width={150} height={50} placeholder="blur" />
             </div>
             <div className="flex" >
-                <form action="" >
+                {/* <form action="" >
                     <Input type="text" placeholder="Search here.." />
                     <button type="submit" className="hidden" >search</button>
-                </form>
+                </form> */}
                 <div className="ms-2" >
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                             {/* <Button variant="outline">Open</Button> */}
                             <Avatar>
-                                <AvatarImage src="https://github.com/shadcn.png" />
-                                {/* <AvatarFallback>CN</AvatarFallback> */}
+                                {!session?.user ? <AvatarImage src={"https://github.com/shadcn.png"} />
+                                    : <AvatarFallback className="text-black" >{session?.user.name?.charAt(0).toUpperCase()}</AvatarFallback>}
                             </Avatar>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent className="w-56">
