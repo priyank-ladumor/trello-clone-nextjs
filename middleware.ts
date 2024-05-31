@@ -8,7 +8,7 @@ export function middleware(request: NextRequest) {
     ]
 
     // const userToken = request.cookies.get("next-auth.session-token")?.value;
-    const userToken = request.cookies.get("authjs.session-token")?.value;
+    const userToken = (request.cookies.get("authjs.session-token")?.value || request.cookies.get("__Secure-authjs.session-token")?.value)
     if ((request.nextUrl.pathname.startsWith('/login') && userToken) || (request.nextUrl.pathname.startsWith('/register') && userToken)) {
         return NextResponse.redirect(new URL('/', request.url))
     }
