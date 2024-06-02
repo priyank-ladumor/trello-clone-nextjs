@@ -13,6 +13,8 @@
 import Header from '@/components/Header'
 import Columns from '@/components/Column'
 import NewTodoDialog from '@/components/new-todo-model'
+import Link from 'next/link'
+import { Button } from '@/components/ui/button'
 
 export default function Home() {
   return (
@@ -20,8 +22,9 @@ export default function Home() {
       {/* <section className='flex h-screen bg-gradient-to-br from-gray-700 to-gray-900 py-12 text-white'> */}
       <div className='mx-auto w-full max-w-7xl px-6'>
         <Header />
-        <div className='mt-5' >
+        <div className='mt-5 flex justify-between' >
           <NewTodoDialog />
+          <Button><Link href={"/react-beautiful-dnd"} >React Beautiful DND</Link></Button>
         </div>
         <div className='grid grid-cols-3 gap-4 mt-5' >
           <Columns title="Todo" status="TODO" />
